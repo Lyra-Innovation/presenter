@@ -1,0 +1,14 @@
+{
+  "name": "presenter",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0",
+    "@ngrx/effects": "^6.1.2",
+    "@ngrx/entity": "^6.1.2",
+    "@ngrx/store": "^6.1.2",
+    "@ngrx/router-store": "^6.1.2",
+    "@ngrx/store-devtools": "^6.1.2",
+    "renderer": "^0.0.1"
+  }
+}

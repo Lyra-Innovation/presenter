@@ -1,0 +1,21 @@
+<ng-container *ngIf="getStatus() !== 'response'">
+  <ng-container *ngIf="getStatus() === 'loading'">
+    <ren-progress class="absolute-middle"></ren-progress>
+  </ng-container>
+
+  <ng-container *ngIf="getStatus() === 'error'">
+    <ren-error class="absolute-middle" [error]="data.error"> </ren-error>
+  </ng-container>
+</ng-container>
+
+<ng-container *ngIf="getStatus() === 'response'">
+  <ren-view-renderer
+    [id]="viewId"
+    [ngClass]="'view-container view-' + view"
+    [componentData]="data.response"
+    [customEvents]="customEvents"
+    (dispatchAction)="handleDispatchAction($event)"
+  >
+    <ng-content></ng-content>
+  </ren-view-renderer>
+</ng-container>

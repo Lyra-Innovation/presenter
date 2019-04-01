@@ -217,7 +217,9 @@ const processScopeSelector = (
     case 'view':
       return selectViewVariable(viewId, select.select)(state);
     case 'local':
-      return componentData.local[select.select];
+      return componentData.local && select.select in componentData.local
+        ? componentData.local[select.select]
+        : null;
     default:
       break;
   }

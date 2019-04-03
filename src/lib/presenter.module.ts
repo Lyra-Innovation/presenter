@@ -17,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from './services/auth.service';
 import { LoadFakeViewService } from './services/load-fake-view.service';
 import { BASE_API_URL } from './presenter.model';
+import { APP_BASE_HREF } from '@angular/common';
 
 export function initApplication(
   store: Store<fromPresenter.PresenterState>,
@@ -44,6 +45,10 @@ export function initApplication(
     });
 }
 
+export function getBaseUrl() {
+  return document.getElementsByTagName('base')[0].href;
+}
+
 @NgModule({
   declarations: [ViewContainerComponent],
   imports: [
@@ -68,7 +73,8 @@ export function initApplication(
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true
-    }
+    },
+    { provide: APP_BASE_HREF, useFactory: getBaseUrl }
   ],
   entryComponents: [ViewContainerComponent],
   exports: [ViewContainerComponent, TranslateModule]

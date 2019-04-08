@@ -32,7 +32,8 @@ export class ApiInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const token = this.authService.getToken();
     const apiReq = req.clone({
-      url: `${this.baseHref}/${this.baseApiUrl}/${req.url}${token ? '?token=' + token : ''}`
+      // url: `${this.baseHref}/${this.baseApiUrl}/${req.url}${token ? '?token=' + token : ''}`
+      url: `${this.baseApiUrl}/${req.url}${token ? '?token=' + token : ''}`
     });
     return next.handle(apiReq).pipe(
       catchError(err => {

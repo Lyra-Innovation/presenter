@@ -34,7 +34,7 @@ export class LoadFakeViewService {
             const sub1 = this.store
               .select(selectViewById(viewId))
               .subscribe(data => {
-                if (!loadRequested) {
+                if (!loadRequested && data) {
                   loadRequested = true;
 
                   this.store.dispatch(

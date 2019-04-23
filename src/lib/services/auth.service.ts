@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthService {
     const token = this.getToken();
     // return a boolean reflecting
     // whether or not the token is expired
-    return token !== null;
+    return token && this.getUserId() !== null;
   }
 
   public setToken(token: any) {

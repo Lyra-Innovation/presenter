@@ -10,6 +10,7 @@ import {
   LoginRequest,
   LoginResponse
 } from '../presenter.model';
+import { processDataSelector } from './presenter.selectors';
 
 export enum PresenterActionTypes {
   LoginAction = '[Presenter] Login Action',

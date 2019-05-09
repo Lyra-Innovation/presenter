@@ -64,6 +64,17 @@ export class RequestBuilderService {
     let successActions = [];
     const errorMessages = [];
     for (const stateAction of presenterState.actionQueue) {
+      if (stateAction.condition) {
+        for (const input of stateAction.condition.inputs) {
+          input['value'] = processDataSelector(
+            rootState,
+            null,
+            null,
+            input.selectFrom
+          );
+        }
+      }
+
       if (stateAction.successActions) {
         const actions = _.cloneDeep(stateAction.successActions);
         successActions = successActions.concat(

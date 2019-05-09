@@ -160,9 +160,10 @@ export const processDataSelector = (
     if ('model' in value && 'id' in value && 'attribute' in value) {
       return processModelSelector(rootState, <ModelSelect>value);
     } else if ('scope' in value && 'select' in value) {
-      return processScopeSelector(rootState, viewId, componentData, <
+      const selected = processScopeSelector(rootState, viewId, componentData, <
         ScopeSelect
       >value);
+      return selected ? selected : value;
     } else if ('default' in value) {
       return value['default'];
     }

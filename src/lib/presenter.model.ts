@@ -49,17 +49,32 @@ export type ValueConfig =
   | { default: string }
   | SelectConfig
   | {
-      query: {
-        model: string;
-        attribute: string;
-        function: string;
-        inputs: Array<InputConfig>;
-        build?: {
-          orderBy: string;
-          take: number;
-        };
-      };
+      query: Query;
     };
+
+export interface CustomQuery {
+  class: string;
+  attribute: string;
+  function: string;
+  inputs: Array<InputConfig>;
+  build?: {
+    orderBy: string;
+    take: number;
+  };
+}
+
+export interface ModelQuery {
+  model: string;
+  attribute: string;
+  function: string;
+  inputs: Array<InputConfig>;
+  build?: {
+    orderBy: string;
+    take: number;
+  };
+}
+
+export type Query = CustomQuery | ModelQuery;
 
 export interface ComponentConfig {
   type: string; // The component that this config will render
@@ -113,6 +128,8 @@ export interface ActionRequest {
   model: string;
   params: Dictionary<any>;
   where: Dictionary<any>;
+
+  condition?: CustomQuery;
 
   successActions?: Array<EventData>;
   errorMessage?: string;

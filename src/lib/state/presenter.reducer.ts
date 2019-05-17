@@ -64,8 +64,8 @@ export function reducer(
   state = initialState,
   action: PresenterActions
 ): PresenterState {
-  console.log('[STATE]', state);
-  console.log('[ACTION]', action);
+//  console.log('[STATE]', state);
+//  console.log('[ACTION]', action);
   switch (action.type) {
     case PresenterActionTypes.LoginSuccess:
       return { ...state, loggedUser: action.payload };

@@ -163,7 +163,7 @@ export const processDataSelector = (
       const selected = processScopeSelector(rootState, viewId, componentData, <
         ScopeSelect
       >value);
-      return selected !== null ? selected : value;
+      return selected != null ? selected : value;
     } else if ('default' in value) {
       return value['default'];
     }

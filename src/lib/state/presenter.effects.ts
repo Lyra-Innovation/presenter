@@ -148,6 +148,7 @@ export class PresenterEffects {
         ]),
         //        retry(2)
         catchError(error => {
+          console.log(error);
           for (const errorMessage of errorMessages) {
             this.showNotification(
               errorMessage || 'CORE.globals.connection-error',

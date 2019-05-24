@@ -40,8 +40,9 @@ export interface EventConfig {
 
 export interface InputConfig {
   name: string;
-  op: string;
-  selectFrom: SelectConfig;
+  op?: string;
+  value?: any;
+  selectFrom?: SelectConfig;
 }
 
 export type ValueConfig =
@@ -54,7 +55,7 @@ export type ValueConfig =
 
 export interface CustomQuery {
   class: string;
-  attribute: string;
+  attribute?: string;
   function: string;
   inputs: Array<InputConfig>;
   build?: {

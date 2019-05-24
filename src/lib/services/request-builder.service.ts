@@ -66,12 +66,14 @@ export class RequestBuilderService {
     for (const stateAction of presenterState.actionQueue) {
       if (stateAction.condition) {
         for (const input of stateAction.condition.inputs) {
-          input['value'] = processDataSelector(
-            rootState,
-            null,
-            null,
-            input.selectFrom
-          );
+          if (input.selectFrom) {
+            input['value'] = processDataSelector(
+              rootState,
+              null,
+              null,
+              input.selectFrom
+            );
+          }
         }
       }
 
